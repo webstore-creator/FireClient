@@ -5,44 +5,6 @@
 <title>FireClient</title>
 
 <style>
-
-  /* BACKGROUND DEPTH EFFECT */
-.bg-effects {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
-}
-
-/* glowing orbs */
-.bg-effects::before,
-.bg-effects::after {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,100,50,0.4), transparent 70%);
-  border-radius: 50%;
-  filter: blur(80px);
-  animation: moveGlow 12s infinite alternate ease-in-out;
-}
-
-.bg-effects::after {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,0,120,0.4), transparent 70%);
-  animation-duration: 16s;
-}
-
-/* movement animation */
-@keyframes moveGlow {
-  0% { transform: translate(-20%, -20%); }
-  50% { transform: translate(60%, 40%); }
-  100% { transform: translate(20%, 80%); }
-}
-
-  
 * {
   margin: 0;
   padding: 0;
@@ -53,15 +15,19 @@
 body {
   color: white;
   overflow-x: hidden;
-  background: linear-gradient(-45deg, #ff512f, #dd2476, #ff512f, #ff9966);
-  background-size: 400% 400%;
-  animation: gradient 12s ease infinite;
+
+  /* BACKGROUND IMAGE */
+  background: url("https://images.unsplash.com/photo-1605902711622-cfb43c4437d1") no-repeat center center fixed;
+  background-size: cover;
 }
 
-@keyframes gradient {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+/* DARK OVERLAY (makes text readable) */
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  z-index: -1;
 }
 
 /* NAVBAR */
@@ -70,21 +36,16 @@ body {
   width: 100%;
   padding: 20px 40px;
   backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.3);
   display: flex;
   justify-content: space-between;
   z-index: 1000;
-}
-
-.navbar h2 {
-  font-weight: bold;
 }
 
 /* HERO */
 .hero {
   text-align: center;
   padding: 150px 20px 100px;
-  animation: fadeIn 1.5s ease;
 }
 
 .hero h1 {
@@ -111,12 +72,7 @@ body {
 
 .btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(255,255,255,0.7);
-}
-
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(40px);}
-  to {opacity:1; transform: translateY(0);}
+  box-shadow: 0 0 25px rgba(255,255,255,0.7);
 }
 
 /* FEATURES */
@@ -138,7 +94,7 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-12px) scale(1.03);
+  transform: translateY(-10px);
 }
 
 /* PREVIEW */
@@ -155,7 +111,7 @@ body {
   border-radius: 20px;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(15px);
-  box-shadow: 0 0 50px rgba(0,0,0,0.7);
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
 }
 
 .preview-box p {
@@ -167,7 +123,6 @@ body {
 .trust {
   text-align: center;
   padding: 80px 20px;
-  opacity: 0.9;
 }
 
 /* FOOTER */
@@ -180,9 +135,9 @@ body {
 </head>
 
 <body>
-  
-<div class="bg-effects"></div>
-  
+
+<div class="overlay"></div>
+
 <!-- NAVBAR -->
 <div class="navbar">
   <h2>🔥 FireClient</h2>
@@ -195,7 +150,7 @@ body {
   <p>Next-level gaming client with high FPS, smooth gameplay, and built-in features.</p>
 
   <a id="downloadLink" href="https://github.com/webstore-creator/FireClient/releases/download/Client/FireClient.exe">
-    <button class="btn" id="downloadBtn">Download</button>
+    <button class="btn" id="downloadBtn">Download for Windows</button>
   </a>
 
   <p style="margin-top:15px; opacity:0.8;">
@@ -212,7 +167,7 @@ body {
 
   <div class="card">
     <h3>🎮 Smooth Gameplay</h3>
-    <p>No stutters, no lag — just clean gameplay.</p>
+    <p>No lag, just clean gameplay.</p>
   </div>
 
   <div class="card">
